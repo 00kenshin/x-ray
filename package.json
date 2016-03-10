@@ -1,11 +1,10 @@
 {
   "_args": [
     [
-      "git+https://github.com/2yuri/x-ray.git",
-      "C:\\Users\\kenshin\\web\\kagerou"
+      "git+https://github.com/00kenshin/x-ray.git"
     ]
   ],
-  "_from": "git+https://github.com/2yuri/x-ray.git",
+  "_from": "git+https://github.com/00kenshin/x-ray.git",
   "_id": "x-ray@2.0.3",
   "_inCache": true,
   "_installable": true,
@@ -17,29 +16,29 @@
   },
   "_requested": {
     "hosted": {
-      "directUrl": "https://raw.githubusercontent.com/2yuri/x-ray/master/package.json",
-      "gitUrl": "git://github.com/2yuri/x-ray.git",
-      "httpsUrl": "git+https://github.com/2yuri/x-ray.git",
-      "shortcut": "github:2yuri/x-ray",
-      "ssh": "git@github.com:2yuri/x-ray.git",
-      "sshUrl": "git+ssh://git@github.com/2yuri/x-ray.git",
+      "directUrl": "https://raw.githubusercontent.com/00kenshin/x-ray/master/package.json",
+      "gitUrl": "git://github.com/00kenshin/x-ray.git",
+      "httpsUrl": "git+https://github.com/00kenshin/x-ray.git",
+      "shortcut": "github:00kenshin/x-ray",
+      "ssh": "git@github.com:00kenshin/x-ray.git",
+      "sshUrl": "git+ssh://git@github.com/00kenshin/x-ray.git",
       "type": "github"
     },
     "name": null,
-    "raw": "git+https://github.com/2yuri/x-ray.git",
-    "rawSpec": "git+https://github.com/2yuri/x-ray.git",
+    "raw": "git+https://github.com/00kenshin/x-ray.git",
+    "rawSpec": "git+https://github.com/00kenshin/x-ray.git",
     "scope": null,
-    "spec": "git+https://github.com/2yuri/x-ray.git",
+    "spec": "git+https://github.com/00kenshin/x-ray.git",
     "type": "hosted"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "git+https://github.com/2yuri/x-ray.git#76c4ae1eecd57419480878b357129a0baf75150a",
+  "_resolved": "git+https://github.com/00kenshin/x-ray.git#76c4ae1eecd57419480878b357129a0baf75150a",
   "_shasum": "1a9bfe9fbb0fa7ff0ef11af38d028aa8d28043e5",
   "_shrinkwrap": null,
-  "_spec": "git+https://github.com/2yuri/x-ray.git",
-  "_where": "C:\\Users\\kenshin\\web\\kagerou",
+  "_spec": "git+https://github.com/00kenshin/x-ray.git",
+  "_where": "",
   "author": {
     "email": "matt@lapwinglabs.cm",
     "name": "Matthew Mueller"
