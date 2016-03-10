@@ -58,6 +58,7 @@ function Xray() {
       stream: false,
       concurrency: Infinity,
       paginate: false,
+      delay: 0,
       limit: Infinity
     }, state || {});
 
@@ -111,6 +112,7 @@ function Xray() {
         if (err) return fn(err);
         var paginate = state.paginate;
         var limit = --state.limit;
+        var delay = state.delay > 0 ? state.delay : 0;
 
         // create the stream
         stream = stream
@@ -120,6 +122,12 @@ function Xray() {
           : stream_object(state.stream);
 
         if (paginate) {
+          //paginatify
+          if (state.paginatify
+              && typeof state.paginatify == 'function') {
+            state.paginatify(obj);
+          };
+
           if (isArray(obj)) {
             pages = pages.concat(obj);
           } else {
@@ -147,11 +155,13 @@ function Xray() {
           debug('paginating %j', url);
           isFinite(limit) && debug('%s page(s) left to crawl', limit)
 
-          xray.request(url, function(err, html) {
-            if (err) return next(err);
-            var $ = load(html, url);
-            node.html($, next);
-          });
+          setTimeout(function() {
+	          xray.request(url, function(err, html) {
+		          if (err) return next(err);
+		          var $ = load(html, url);
+		          node.html($, next);
+          	});
+          }, delay);
 
         } else {
           stream(obj, true);
@@ -189,7 +199,7 @@ function Xray() {
             // Handle the empty result set (thanks @jenbennings!)
             if (!pending) return next(null, out);
 
-            $scope.each(function(i, el) {
+            return $scope.each(function(i, el) {
               var $innerscope = $scope.eq(i);
               var node = xray(scope, v[0]);
               node($innerscope, function(err, obj) {
@@ -201,20 +211,26 @@ function Xray() {
               });
             });
           }
+        }else{
+          return next();
         }
-        return next();
       }, function(err, obj) {
         if (err) return fn(err);
         fn(null, obj, $);
       });
     }
 
-    node.paginate = function(paginate) {
+    node.paginate = function(paginate,fn) {
       if (!arguments.length) return state.paginate;
       state.paginate = paginate;
+      state.paginatify = fn;
       return node;
     }
-
+    node.delay = function(delay) {
+      if (!arguments.length) return state.delay;
+      state.delay = delay;
+      return node;
+    }
     node.limit = function(limit) {
       if (!arguments.length) return state.limit;
       state.limit = limit;
